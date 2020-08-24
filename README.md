@@ -1,8 +1,10 @@
 # SeventhParadigm
 The purpose of this app is to help people protect the environment. It will collect product infomration through scanning QR code.
-## Setp: 1 
+## Step: 0
+https://www.jianshu.com/p/c70ca3a02087 git设定
+## Step: 1 
 https://reactnative.dev/docs/environment-setup 配环境
-## Setp: 2
+## Step: 2
 npm install -g yarn
-## Setp: 3
+## Step: 3
 rm -rf node_modules && npm install
