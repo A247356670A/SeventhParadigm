@@ -8,6 +8,9 @@ https://reactnative.dev/docs/environment-setup 配环境
 npm install -g yarn
 ## Step: 3
 npm rm -rf node_modules && npm install
+
 ## 可能报错 1:
+
  Could not initialize class org.codehaus.groovy.reflection.ReflectionCache
+ 
 https://stackoverflow.com/questions/60844245/how-solve-could-not-initialize-class-org-codehaus-groovy-reflection-reflectionc
