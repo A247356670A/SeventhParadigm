@@ -7,4 +7,4 @@ https://reactnative.dev/docs/environment-setup 配环境
 ## Step: 2
 npm install -g yarn
 ## Step: 3
-rm -rf node_modules && npm install
+npm rm -rf node_modules && npm install
