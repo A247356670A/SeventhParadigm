@@ -1,6 +1,7 @@
 import * as React from 'react';
+import { useState } from 'react';
 
-import {StyleSheet, Button, View, Text} from 'react-native';
+import {CheckBox, StyleSheet, Button, View, Text} from 'react-native';
 import 'react-native-gesture-handler';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
@@ -46,13 +47,21 @@ const DetailsScreen2 = ({navigation}) => {
 
 // Land-Loser is working
 const TaskScreen = ({navigation}) => {
-    return (
-        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-            <Text style={styles.bigBlue}>Some Tasks Here</Text>
-            <Button title="Go Home" onPress={() => navigation.navigate('Home')} />
+    const [isSelected, setSelection] = useState(false);
+
+      return (
+        <View style={styles.taskContainer}>
+          <View style={styles.checkboxContainer}>
+            <CheckBox
+              value={isSelected}
+              onValueChange={setSelection}
+              style={styles.checkbox}
+            />
+            <Text style={styles.label}>Do you like React Native? {isSelected ? "👍" : "👎"}</Text>
+          </View>
         </View>
-    );
-};
+      );
+    };
 
 const Stack = createStackNavigator();
 
@@ -84,6 +93,21 @@ const styles = StyleSheet.create({
   },
   red: {
     color: 'red',
+  },
+  taskContainer: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  checkboxContainer: {
+    flexDirection: "row",
+    marginBottom: 20,
+  },
+  checkbox: {
+    alignSelf: "center",
+  },
+    label: {
+    margin: 8,
   },
 });
 export default MyStack;
