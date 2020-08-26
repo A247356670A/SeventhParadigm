@@ -17,6 +17,10 @@ const HomeScreen = ({navigation}) => {
         title="Go to Details"
         onPress={() => navigation.navigate('Details')}
       />
+      <Button
+        title="Go to Tasks"
+        onPress={() => navigation.navigate('Task')}
+      />
     </View>
   );
 };
@@ -40,6 +44,16 @@ const DetailsScreen2 = ({navigation}) => {
     );
 };
 
+// Land-Loser is working
+const TaskScreen = ({navigation}) => {
+    return (
+        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+            <Text style={styles.bigBlue}>Some Tasks Here</Text>
+            <Button title="Go Home" onPress={() => navigation.navigate('Home')} />
+        </View>
+    );
+};
+
 const Stack = createStackNavigator();
 
 const MyStack = () => {
@@ -53,6 +67,7 @@ const MyStack = () => {
         />
         <Stack.Screen name="Details" component={DetailsScreen} />
         <Stack.Screen name="Details2" component={DetailsScreen2} />
+        <Stack.Screen name="Task" component={TaskScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
