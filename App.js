@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {useState} from 'react';
+import {BlurView} from 'expo-blur';
 
 import {CheckBox, StyleSheet, Button, View, Text} from 'react-native';
 
@@ -19,24 +20,56 @@ const HomeScreen = ({navigation}) => {
             <Text style={styles.red}>Home Screen</Text>
             <Button
                 title="Go to Details"
-                onPress={() => navigation.navigate('Details')}
+                onPress={() => navigation.navigate('Home_Details')}
             />
         </View>
     );
 };
+
+const HomeDetailStackScreen = ({navigation}) => {
+    return (
+        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+            <Text style={styles.bigBlue}>Home Details Screen</Text>
+            {/*<Button title="Go Home" onPress={() => navigation.navigate('Home')} />*/}
+            {/*  <Button title="Go to Details" onPress={() => navigation.navigate('Details2')} />*/}
+        </View>
+    );
+};
+
 const RecordScreen = ({navigation}) => {
     return (
         <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
             <Text style={styles.bigBlue}>Record Screen</Text>
-            <Button title="Go to Details" onPress={() => navigation.navigate('Details')}/>
+            <Button title="Go to Details" onPress={() => navigation.navigate('Record_Details')}/>
         </View>
     );
 };
+
+const RecordDetailStackScreen = ({navigation}) => {
+    return (
+        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+            <Text style={styles.bigBlue}>Record Details Screen</Text>
+            {/*<Button title="Go Home" onPress={() => navigation.navigate('Home')} />*/}
+            {/*  <Button title="Go to Details" onPress={() => navigation.navigate('Details2')} />*/}
+        </View>
+    );
+};
+
 const SuggestScreen = ({navigation}) => {
     return (
         <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
             <Text style={styles.bigBlue}>Suggest Screen</Text>
-            <Button title="Go to Details" onPress={() => navigation.navigate('Details')}/>
+            <Button title="Go to Details" onPress={() => navigation.navigate('Suggest_Details')}/>
+        </View>
+    );
+};
+
+const SuggestDetailStackScreen = ({navigation}) => {
+    return (
+        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+            <Text style={styles.bigBlue}>Suggest Details Screen</Text>
+            {/*<Button title="Go Home" onPress={() => navigation.navigate('Home')} />*/}
+            {/*  <Button title="Go to Details" onPress={() => navigation.navigate('Details2')} />*/}
         </View>
     );
 };
@@ -47,44 +80,57 @@ const TaskScreen = ({navigation}) => {
     const [isGym, setGym] = useState(false);
     const [isDri, setDri] = useState(false);
     const [isCup, setCup] = useState(false);
-      return (
-        <View style={styles.taskContainer}>
-          <View style={styles.checkboxContainer}>
-            <CheckBox value={isElev} onValueChange={setElev} style={styles.checkbox}/>
-            <Text style={styles.label}>Stairs Not Elevator? {isElev ? "👍" : "👎"}</Text>
-          </View>
-          <View style={styles.checkboxContainer}>
-            <CheckBox value={isGym} onValueChange={setGym} style={styles.checkbox}/>
-            <Text style={styles.label}>Going to Gym? {isGym ? "👍" : "👎"}</Text>
-          </View>
-          <View style={styles.checkboxContainer}>
-            <CheckBox value={isDri} onValueChange={setDri} style={styles.checkbox}/>
-            <Text style={styles.label}>Not Driving to Work? {isDri ? "👍" : "👎"}</Text>
-          </View>
-          <View style={styles.checkboxContainer}>
-            <CheckBox value={isCup} onValueChange={setCup} style={styles.checkbox}/>
-            <Text style={styles.label}>Using Your Own Cup? {isCup ? "👍" : "👎"}</Text>
-          </View>
-        </View>
-      );
-    };
-const RewardScreen = ({navigation}) => {
     return (
-        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-            <Text style={styles.bigBlue}>Reward Screen</Text>
-            <Button title="Go to Details" onPress={() => navigation.navigate('Details')}/>
+        <View style={styles.taskContainer}>
+            <Text style={styles.bigBlue}>Tasks Screen</Text>
+            <View style={styles.checkboxContainer}>
+                <CheckBox value={isElev} onValueChange={setElev} style={styles.checkbox}/>
+                <Text style={styles.label}>Stairs Not Elevator? {isElev ? '👍' : '👎'}</Text><Button title="?" onPress={() => navigation.navigate('Task_Details')}/>
+            </View>
+            <View style={styles.checkboxContainer}>
+                <CheckBox value={isGym} onValueChange={setGym} style={styles.checkbox}/>
+                <Text style={styles.label}>Going to Gym? {isGym ? '👍' : '👎'}</Text><Button title="?" onPress={() => navigation.navigate('Task_Details')}/>
+            </View>
+            <View style={styles.checkboxContainer}>
+                <CheckBox value={isDri} onValueChange={setDri} style={styles.checkbox}/>
+                <Text style={styles.label}>Not Driving to Work? {isDri ? '👍' : '👎'}</Text><Button title="?" onPress={() => navigation.navigate('Task_Details')}/>
+            </View>
+            <View style={styles.checkboxContainer}>
+                <CheckBox value={isCup} onValueChange={setCup} style={styles.checkbox}/>
+                <Text style={styles.label}>Using Your Own Cup? {isCup ? '👍' : '👎'}</Text><Button title="?" onPress={() => navigation.navigate('Task_Details')}/>
+            </View>
         </View>
     );
 };
-const DetailsScreen = ({navigation}) => {
+
+const TaskDetailStackScreen = ({navigation}) => {
     return (
         <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-            <Text style={styles.bigBlue}>Details Screen</Text>
+            <Text style={styles.bigBlue}>Task Details Screen</Text>
             {/*<Button title="Go Home" onPress={() => navigation.navigate('Home')} />*/}
             {/*  <Button title="Go to Details" onPress={() => navigation.navigate('Details2')} />*/}
         </View>
     );
 };
+
+const RewardScreen = ({navigation}) => {
+    return (
+        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+            <Text style={styles.bigBlue}>Reward Screen</Text>
+            <Button title="Go to Details" onPress={() => navigation.navigate('Reward_Details')}/>
+        </View>
+    );
+};
+const RewardDetailStackScreen = ({navigation}) => {
+    return (
+        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+            <Text style={styles.bigBlue}>Reward Details Screen</Text>
+            {/*<Button title="Go Home" onPress={() => navigation.navigate('Home')} />*/}
+            {/*  <Button title="Go to Details" onPress={() => navigation.navigate('Details2')} />*/}
+        </View>
+    );
+};
+
 //**********************************************************************************************************************
 const HomeStack = createStackNavigator();
 
@@ -94,27 +140,26 @@ function HomeStackScreen() {
             <HomeStack.Screen
                 name="Home"
                 component={HomeScreen}
-                options={{title: 'Welcome'}}
+                options={{
+                    headerTitle: 'Welcome',
+                    headerTitleAlign: 'center',
+                    headerStyle: {backgroundColor: 'green'},
+                    headerTitleStyle: {color: 'white'},
+                }}
             />
-            <HomeStack.Screen name="Home_Details" component={DetailsScreen}/>
+            <HomeStack.Screen
+                name="Home_Details"
+                component={HomeDetailStackScreen}
+                options={{
+                    title: 'Home Detail',
+                    headerTitleAlign: 'center',
+                    headerStyle: {backgroundColor: 'green'},
+                    headerTitleStyle: {color: 'white'},
+                }}
+            />
         </HomeStack.Navigator>
     );
-};
-
-const TaskStack = createStackNavigator();
-
-function TaskStackScreen() {
-    return (
-        <TaskStack.Navigator>
-            <TaskStack.Screen
-                name="Task"
-                component={TaskScreen}
-                options={{title: 'Task'}}
-            />
-            <TaskStack.Screen name="Task_Details" component={DetailsScreen}/>
-        </TaskStack.Navigator>
-    );
-};
+}
 
 const RecordStack = createStackNavigator();
 
@@ -124,12 +169,26 @@ function RecordStackScreen() {
             <RecordStack.Screen
                 name="Record"
                 component={RecordScreen}
-                options={{title: 'Record'}}
+                options={{
+                    title: 'Record',
+                    headerTitleAlign: 'center',
+                    headerStyle: {backgroundColor: 'green'},
+                    headerTitleStyle: {color: 'white'},
+                }}
             />
-            <RecordStack.Screen name="Record_Details" component={DetailsScreen}/>
+            <RecordStack.Screen
+                name="Record_Details"
+                component={RecordDetailStackScreen}
+                options={{
+                    title: 'Record Detail',
+                    headerTitleAlign: 'center',
+                    headerStyle: {backgroundColor: 'green'},
+                    headerTitleStyle: {color: 'white'},
+                }}
+            />
         </RecordStack.Navigator>
     );
-};
+}
 
 const SuggestStack = createStackNavigator();
 
@@ -139,12 +198,57 @@ function SuggestStackScreen() {
             <SuggestStack.Screen
                 name="Suggest"
                 component={SuggestScreen}
-                options={{title: 'Suggest'}}
+                options={{
+                    title: 'Suggest',
+                    headerTitleAlign: 'center',
+                    headerStyle: {backgroundColor: 'green'},
+                    headerTitleStyle: {color: 'white'},
+                }}
             />
-            <SuggestStack.Screen name="Suggest_Details" component={DetailsScreen}/>
+            <SuggestStack.Screen
+                name="Suggest_Details"
+                component={SuggestDetailStackScreen}
+                options={{
+                    title: 'Suggest Detail',
+                    headerTitleAlign: 'center',
+                    headerStyle: {backgroundColor: 'green'},
+                    headerTitleStyle: {color: 'white'},
+                }}
+            />
         </SuggestStack.Navigator>
     );
-};
+}
+
+const TaskStack = createStackNavigator();
+
+function TaskStackScreen() {
+    return (
+        <TaskStack.Navigator>
+            <TaskStack.Screen
+                name="Task"
+                component={TaskScreen}
+                options={{
+                    title: 'Task',
+                    headerTitleAlign: 'center',
+                    headerStyle: {backgroundColor: 'green'},
+                    headerTitleStyle: {color: 'white'},
+                }}
+            />
+            <TaskStack.Screen
+                name="Task_Details"
+                component={TaskDetailStackScreen}
+                options={{
+                    title: 'Task Detail',
+                    headerTitleAlign: 'center',
+                    headerStyle: {backgroundColor: 'green'},
+                    headerTitleStyle: {color: 'white'},
+                }}
+            />
+        </TaskStack.Navigator>
+    );
+}
+
+
 const RewardStack = createStackNavigator();
 
 function RewardStackScreen() {
@@ -153,12 +257,28 @@ function RewardStackScreen() {
             <RewardStack.Screen
                 name="Reward"
                 component={RewardScreen}
-                options={{title: 'Reward'}}
+                options={{
+                    title: 'Reward',
+                    headerTitleAlign: 'center',
+                    headerStyle: {backgroundColor: 'green'},
+                    headerTitleStyle: {color: 'white'},
+                }}
             />
-            <RewardStack.Screen name="Reward_Details" component={DetailsScreen}/>
+            <RewardStack.Screen
+                name="Reward_Details"
+                component={RewardDetailStackScreen}
+                options={{
+                    title: 'Reward Detail',
+                    headerTitleAlign: 'center',
+                    headerStyle: {backgroundColor: 'green'},
+                    headerTitleStyle: {color: 'white'},
+                }}
+            />
         </RewardStack.Navigator>
     );
-};
+}
+
+
 //**********************************************************************************************************************
 const Tab = createBottomTabNavigator();
 
