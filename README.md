@@ -6,8 +6,14 @@ https://www.jianshu.com/p/c70ca3a02087 git设定
 https://reactnative.dev/docs/environment-setup 配环境
 ## Step: 2
 npm install -g yarn
-## Step: 3
+## Step: 3 (每次pull后都run一遍, 可能装了新的package)
 npm rm -rf node_modules && npm install
+## run 
+yarn start --reset-cache
+
+yarn react-native run-android
+
+## 
 
 ## 可能报错 1:
 
