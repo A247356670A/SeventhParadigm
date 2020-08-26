@@ -45,23 +45,35 @@ const DetailsScreen2 = ({navigation}) => {
     );
 };
 
-// Land-Loser is working
+// Land-Loser is working below
 const TaskScreen = ({navigation}) => {
-    const [isSelected, setSelection] = useState(false);
+    const [isElev, setElev] = useState(false);
+    const [isGym, setGym] = useState(false);
+    const [isDri, setDri] = useState(false);
+    const [isCup, setCup] = useState(false);
 
       return (
         <View style={styles.taskContainer}>
           <View style={styles.checkboxContainer}>
-            <CheckBox
-              value={isSelected}
-              onValueChange={setSelection}
-              style={styles.checkbox}
-            />
-            <Text style={styles.label}>Do you like React Native? {isSelected ? "👍" : "👎"}</Text>
+            <CheckBox value={isElev} onValueChange={setElev} style={styles.checkbox}/>
+            <Text style={styles.label}>Stairs Not Elevator? {isElev ? "👍" : "👎"}</Text>
+          </View>
+          <View style={styles.checkboxContainer}>
+            <CheckBox value={isGym} onValueChange={setGym} style={styles.checkbox}/>
+            <Text style={styles.label}>Going to Gym? {isGym ? "👍" : "👎"}</Text>
+          </View>
+          <View style={styles.checkboxContainer}>
+            <CheckBox value={isDri} onValueChange={setDri} style={styles.checkbox}/>
+            <Text style={styles.label}>Not Driving to Work? {isDri ? "👍" : "👎"}</Text>
+          </View>
+          <View style={styles.checkboxContainer}>
+            <CheckBox value={isCup} onValueChange={setCup} style={styles.checkbox}/>
+            <Text style={styles.label}>Using Your Own Cup? {isCup ? "👍" : "👎"}</Text>
           </View>
         </View>
       );
     };
+// Land-Loser is working above
 
 const Stack = createStackNavigator();
 
