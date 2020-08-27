@@ -13,7 +13,11 @@ yarn start --reset-cache
 
 yarn react-native run-android
 
-## 
+## 图标问题
+
+npm install --save react-native-vector-icons // 下载库
+
+react-native link react-native-vector-icons // 自动关联
 
 ## 可能报错 1:
 
