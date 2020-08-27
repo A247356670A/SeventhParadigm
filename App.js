@@ -4,7 +4,7 @@ import {BlurView} from 'expo-blur';
 
 import {CheckBox, StyleSheet, Button, View, Text} from 'react-native';
 
-import {Ionicons} from '@expo/vector-icons';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import 'react-native-gesture-handler';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -283,6 +283,7 @@ function RewardStackScreen() {
 const Tab = createBottomTabNavigator();
 
 export default function MyBottom() {
+
     return (
         <NavigationContainer>
             <Tab.Navigator
@@ -291,23 +292,32 @@ export default function MyBottom() {
                     tabBarIcon: ({focused, color, size}) => {
                         let iconName;
 
-                        if (route.name === 'Home') {
-                            iconName = focused ? 'ios-information-circle' : 'ios-information-circle-outline';
-                        } else if (route.name === 'Details') {
-                            iconName = focused ? 'ios-list-box' : 'ios-list';
+                        if (route.name === 'Suggest') {
+                            iconName = focused ? 'leaf' : 'leaf';
+                        } else if (route.name === 'Record') {
+                            iconName = focused ? 'bar-chart' : 'bar-chart';
+                        }else if (route.name === 'Home') {
+                            iconName = focused ? 'home' : 'home';
+                        }else if (route.name === 'Task') {
+                            iconName = focused ? 'tasks' : 'tasks';
+                        }else if (route.name === 'Reward') {
+                            iconName = focused ? 'gift' : 'gift';
                         }
 
                         // You can return any component that you like here!
-                        return <Ionicons name={iconName} size={size} color={color}/>;
+                        return <Icon   name={iconName} size={size} color={color}/>;
                     },
 
 
                 })}
+
                 tabBarOptions={{
+                    showIcon: true,
                     activeTintColor: 'tomato',
                     inactiveTintColor: 'black',
                 }}
             >
+
                 <Tab.Screen
                     name="Suggest"
                     component={SuggestStackScreen}
