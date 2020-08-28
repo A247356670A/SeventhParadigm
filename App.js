@@ -9,6 +9,8 @@ import 'react-native-gesture-handler';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createStackNavigator} from '@react-navigation/stack';
+import {IconButton, Colors} from 'react-native-paper';
+
 
 //Navigation Install:
 //npm install @react-navigation/native @react-navigation/stack
@@ -16,21 +18,19 @@ import {createStackNavigator} from '@react-navigation/stack';
 
 const HomeScreen = ({navigation}) => {
     return (
-        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center', }}>
-            <View style ={{alignItems: 'center', justifyContent: 'space-around', backgroundColor:'white', borderBottomLeftRadius: 30}}>
-                <Text style={styles.red}>Home Screen</Text>
-                <Button
-                    title="Go to Details"
-                    onPress={() => navigation.navigate('Home_Details')}
-                />
-            </View>
+        <View style={styles.taskContainer}>
+            <Text style={styles.red}>Home Screen</Text>
+            <Button
+                title="Go to Details"
+                onPress={() => navigation.navigate('Home_Details')}
+            />
         </View>
     );
 };
 
 const HomeDetailStackScreen = ({navigation}) => {
     return (
-        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+        <View style={styles.taskContainer}>
             <Text style={styles.bigBlue}>Home Details Screen</Text>
             {/*<Button title="Go Home" onPress={() => navigation.navigate('Home')} />*/}
             {/*  <Button title="Go to Details" onPress={() => navigation.navigate('Details2')} />*/}
@@ -40,7 +40,7 @@ const HomeDetailStackScreen = ({navigation}) => {
 
 const RecordScreen = ({navigation}) => {
     return (
-        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+        <View style={styles.taskContainer}>
             <Text style={styles.bigBlue}>Record Screen</Text>
             <Button title="Go to Details" onPress={() => navigation.navigate('Record_Details')}/>
         </View>
@@ -49,7 +49,7 @@ const RecordScreen = ({navigation}) => {
 
 const RecordDetailStackScreen = ({navigation}) => {
     return (
-        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+        <View style={styles.taskContainer}>
             <Text style={styles.bigBlue}>Record Details Screen</Text>
             {/*<Button title="Go Home" onPress={() => navigation.navigate('Home')} />*/}
             {/*  <Button title="Go to Details" onPress={() => navigation.navigate('Details2')} />*/}
@@ -59,7 +59,7 @@ const RecordDetailStackScreen = ({navigation}) => {
 
 const SuggestScreen = ({navigation}) => {
     return (
-        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+        <View style={styles.taskContainer}>
             <Text style={styles.bigBlue}>Suggest Screen</Text>
             <Button title="Go to Details" onPress={() => navigation.navigate('Suggest_Details')}/>
         </View>
@@ -68,7 +68,7 @@ const SuggestScreen = ({navigation}) => {
 
 const SuggestDetailStackScreen = ({navigation}) => {
     return (
-        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+        <View style={styles.taskContainer}>
             <Text style={styles.bigBlue}>Suggest Details Screen</Text>
             {/*<Button title="Go Home" onPress={() => navigation.navigate('Home')} />*/}
             {/*  <Button title="Go to Details" onPress={() => navigation.navigate('Details2')} />*/}
@@ -107,7 +107,7 @@ const TaskScreen = ({navigation}) => {
 
 const TaskDetailStackScreen = ({navigation}) => {
     return (
-        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+        <View style={styles.taskContainer}>
             <Text style={styles.bigBlue}>Task Details Screen</Text>
             {/*<Button title="Go Home" onPress={() => navigation.navigate('Home')} />*/}
             {/*  <Button title="Go to Details" onPress={() => navigation.navigate('Details2')} />*/}
@@ -117,7 +117,7 @@ const TaskDetailStackScreen = ({navigation}) => {
 
 const RewardScreen = ({navigation}) => {
     return (
-        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+        <View style={styles.taskContainer}>
             <Text style={styles.bigBlue}>Reward Screen</Text>
             <Button title="Go to Details" onPress={() => navigation.navigate('Reward_Details')}/>
         </View>
@@ -125,7 +125,7 @@ const RewardScreen = ({navigation}) => {
 };
 const RewardDetailStackScreen = ({navigation}) => {
     return (
-        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+        <View style={styles.taskContainer}>
             <Text style={styles.bigBlue}>Reward Details Screen</Text>
             {/*<Button title="Go Home" onPress={() => navigation.navigate('Home')} />*/}
             {/*  <Button title="Go to Details" onPress={() => navigation.navigate('Details2')} />*/}
@@ -144,9 +144,48 @@ function HomeStackScreen() {
                 component={HomeScreen}
                 options={{
                     headerTitle: 'Welcome',
+
                     headerTitleAlign: 'center',
-                    headerStyle: {backgroundColor: '#68BE92',borderBottomLeftRadius: 30, },
-                    headerTitleStyle: {color: 'white',fontWeight: 'bold',},
+                    headerStyle: {
+                        height: 80 ,
+                        backgroundColor: '#68BE92',
+                        borderBottomLeftRadius: 35, },
+                    headerTitleStyle: {
+                        paddingBottom: 20,
+                        paddingTop: 20,
+                        fontSize: 25,
+                        color: 'white'},
+
+                    headerRightContainerStyle:{
+                        paddingBottom: 10,
+                        paddingRight: 20,
+                        paddingTop: 10,
+
+                    },
+                    headerLeftContainerStyle:{
+                        paddingBottom: 10,
+                        paddingLeft: 30,
+                        paddingTop: 10,
+
+
+                    },
+                    headerRight: () => (
+                        <Icon
+                            name = "user"
+                            onPress={() => alert('Please login!')}
+                            color={Colors.white}
+                            size={30}
+                        />
+                    ),
+                    headerLeft: () => (
+                        <Icon
+                            name = "bars"
+                            onPress={() => alert('Please login!')}
+                            color={Colors.white}
+                            size={30}
+                        />
+                    ),
+
                 }}
             />
             <HomeStack.Screen
@@ -357,10 +396,12 @@ const styles = StyleSheet.create({
     red: {
         color: 'red',
     },
+
     taskContainer: {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
+
     },
     checkboxContainer: {
         flexDirection: 'row',
