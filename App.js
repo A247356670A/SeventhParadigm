@@ -87,19 +87,23 @@ const TaskScreen = ({navigation}) => {
             <Text style={styles.bigBlue}>Tasks Screen</Text>
             <View style={styles.checkboxContainer}>
                 <CheckBox value={isElev} onValueChange={setElev} style={styles.checkbox}/>
-                <Text style={styles.label}>Stairs Not Elevator? {isElev ? '👍' : '👎'}</Text><Button title="?" onPress={() => navigation.navigate('Task_Details')}/>
+                <Text style={styles.label}>Stairs Not Elevator? {isElev ? '👍' : '👎'}</Text><Button title="?"
+                                                                                                     onPress={() => navigation.navigate('Task_Details')}/>
             </View>
             <View style={styles.checkboxContainer}>
                 <CheckBox value={isGym} onValueChange={setGym} style={styles.checkbox}/>
-                <Text style={styles.label}>Going to Gym? {isGym ? '👍' : '👎'}</Text><Button title="?" onPress={() => navigation.navigate('Task_Details')}/>
+                <Text style={styles.label}>Going to Gym? {isGym ? '👍' : '👎'}</Text><Button title="?"
+                                                                                             onPress={() => navigation.navigate('Task_Details')}/>
             </View>
             <View style={styles.checkboxContainer}>
                 <CheckBox value={isDri} onValueChange={setDri} style={styles.checkbox}/>
-                <Text style={styles.label}>Not Driving to Work? {isDri ? '👍' : '👎'}</Text><Button title="?" onPress={() => navigation.navigate('Task_Details')}/>
+                <Text style={styles.label}>Not Driving to Work? {isDri ? '👍' : '👎'}</Text><Button title="?"
+                                                                                                    onPress={() => navigation.navigate('Task_Details')}/>
             </View>
             <View style={styles.checkboxContainer}>
                 <CheckBox value={isCup} onValueChange={setCup} style={styles.checkbox}/>
-                <Text style={styles.label}>Using Your Own Cup? {isCup ? '👍' : '👎'}</Text><Button title="?" onPress={() => navigation.navigate('Task_Details')}/>
+                <Text style={styles.label}>Using Your Own Cup? {isCup ? '👍' : '👎'}</Text><Button title="?"
+                                                                                                   onPress={() => navigation.navigate('Task_Details')}/>
             </View>
         </View>
     );
@@ -144,48 +148,42 @@ function HomeStackScreen() {
                 component={HomeScreen}
                 options={{
                     headerTitle: 'Welcome',
-
-                    headerTitleAlign: 'center',
+                    headerTitleAlign: 'left',
                     headerStyle: {
-                        height: 80 ,
+                        height: 135,
                         backgroundColor: '#68BE92',
-                        borderBottomLeftRadius: 35, },
-                    headerTitleStyle: {
-                        paddingBottom: 20,
-                        paddingTop: 20,
-                        fontSize: 25,
-                        color: 'white'},
-
-                    headerRightContainerStyle:{
-                        paddingBottom: 10,
-                        paddingRight: 20,
-                        paddingTop: 10,
-
+                        borderBottomLeftRadius: 80,
                     },
-                    headerLeftContainerStyle:{
-                        paddingBottom: 10,
-                        paddingLeft: 30,
-                        paddingTop: 10,
+                    headerTitleStyle: {
+                        paddingLeft: 35,
+                        paddingTop: 35,
+                        fontSize: 30,
+                        color: 'white',
+                    },
+                    headerRightContainerStyle: {
+                        paddingBottom: 55,
+                        paddingRight: 25,
 
 
                     },
                     headerRight: () => (
-                        <Icon
-                            name = "user"
-                            onPress={() => alert('Please login!')}
-                            color={Colors.white}
-                            size={30}
-                        />
-                    ),
-                    headerLeft: () => (
-                        <Icon
-                            name = "bars"
-                            onPress={() => alert('Please login!')}
-                            color={Colors.white}
-                            size={30}
-                        />
-                    ),
+                        <View style={{flexDirection: 'row'}}>
+                            {/*<Icon*/}
+                            {/*    name="bars"*/}
+                            {/*    onPress={() => alert('Please login!')}*/}
+                            {/*    color={Colors.white}*/}
+                            {/*    style={{marginRight: 30}}*/}
+                            {/*    size={30}*/}
+                            {/*/>*/}
+                            <Icon
+                                name="user"
+                                onPress={() => alert('Please login!')}
+                                color={Colors.white}
+                                size={30}
 
+                            />
+                        </View>
+                    ),
                 }}
             />
             <HomeStack.Screen
@@ -337,16 +335,16 @@ export default function MyBottom() {
                             iconName = focused ? 'leaf' : 'leaf';
                         } else if (route.name === 'Record') {
                             iconName = focused ? 'bar-chart' : 'bar-chart';
-                        }else if (route.name === 'Home') {
+                        } else if (route.name === 'Home') {
                             iconName = focused ? 'home' : 'home';
-                        }else if (route.name === 'Task') {
+                        } else if (route.name === 'Task') {
                             iconName = focused ? 'tasks' : 'tasks';
-                        }else if (route.name === 'Reward') {
+                        } else if (route.name === 'Reward') {
                             iconName = focused ? 'gift' : 'gift';
                         }
 
                         // You can return any component that you like here!
-                        return <Icon   name={iconName} size={size} color={color}/>;
+                        return <Icon name={iconName} size={size} color={color}/>;
                     },
 
 
