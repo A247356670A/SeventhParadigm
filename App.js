@@ -16,12 +16,14 @@ import {createStackNavigator} from '@react-navigation/stack';
 
 const HomeScreen = ({navigation}) => {
     return (
-        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-            <Text style={styles.red}>Home Screen</Text>
-            <Button
-                title="Go to Details"
-                onPress={() => navigation.navigate('Home_Details')}
-            />
+        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center', }}>
+            <View style ={{alignItems: 'center', justifyContent: 'space-around', backgroundColor:'white', borderBottomLeftRadius: 30}}>
+                <Text style={styles.red}>Home Screen</Text>
+                <Button
+                    title="Go to Details"
+                    onPress={() => navigation.navigate('Home_Details')}
+                />
+            </View>
         </View>
     );
 };
@@ -143,8 +145,8 @@ function HomeStackScreen() {
                 options={{
                     headerTitle: 'Welcome',
                     headerTitleAlign: 'center',
-                    headerStyle: {backgroundColor: 'green'},
-                    headerTitleStyle: {color: 'white'},
+                    headerStyle: {backgroundColor: '#68BE92',borderBottomLeftRadius: 30, },
+                    headerTitleStyle: {color: 'white',fontWeight: 'bold',},
                 }}
             />
             <HomeStack.Screen
@@ -153,7 +155,7 @@ function HomeStackScreen() {
                 options={{
                     title: 'Home Detail',
                     headerTitleAlign: 'center',
-                    headerStyle: {backgroundColor: 'green'},
+                    headerStyle: {backgroundColor: '#68BE92'},
                     headerTitleStyle: {color: 'white'},
                 }}
             />
@@ -172,7 +174,7 @@ function RecordStackScreen() {
                 options={{
                     title: 'Record',
                     headerTitleAlign: 'center',
-                    headerStyle: {backgroundColor: 'green'},
+                    headerStyle: {backgroundColor: '#68BE92'},
                     headerTitleStyle: {color: 'white'},
                 }}
             />
@@ -182,7 +184,7 @@ function RecordStackScreen() {
                 options={{
                     title: 'Record Detail',
                     headerTitleAlign: 'center',
-                    headerStyle: {backgroundColor: 'green'},
+                    headerStyle: {backgroundColor: '#68BE92'},
                     headerTitleStyle: {color: 'white'},
                 }}
             />
@@ -201,7 +203,7 @@ function SuggestStackScreen() {
                 options={{
                     title: 'Suggest',
                     headerTitleAlign: 'center',
-                    headerStyle: {backgroundColor: 'green'},
+                    headerStyle: {backgroundColor: '#68BE92'},
                     headerTitleStyle: {color: 'white'},
                 }}
             />
@@ -211,7 +213,7 @@ function SuggestStackScreen() {
                 options={{
                     title: 'Suggest Detail',
                     headerTitleAlign: 'center',
-                    headerStyle: {backgroundColor: 'green'},
+                    headerStyle: {backgroundColor: '#68BE92'},
                     headerTitleStyle: {color: 'white'},
                 }}
             />
@@ -230,7 +232,7 @@ function TaskStackScreen() {
                 options={{
                     title: 'Task',
                     headerTitleAlign: 'center',
-                    headerStyle: {backgroundColor: 'green'},
+                    headerStyle: {backgroundColor: '#68BE92'},
                     headerTitleStyle: {color: 'white'},
                 }}
             />
@@ -240,7 +242,7 @@ function TaskStackScreen() {
                 options={{
                     title: 'Task Detail',
                     headerTitleAlign: 'center',
-                    headerStyle: {backgroundColor: 'green'},
+                    headerStyle: {backgroundColor: '#68BE92'},
                     headerTitleStyle: {color: 'white'},
                 }}
             />
@@ -260,7 +262,7 @@ function RewardStackScreen() {
                 options={{
                     title: 'Reward',
                     headerTitleAlign: 'center',
-                    headerStyle: {backgroundColor: 'green'},
+                    headerStyle: {backgroundColor: '#68BE92'},
                     headerTitleStyle: {color: 'white'},
                 }}
             />
@@ -270,7 +272,7 @@ function RewardStackScreen() {
                 options={{
                     title: 'Reward Detail',
                     headerTitleAlign: 'center',
-                    headerStyle: {backgroundColor: 'green'},
+                    headerStyle: {backgroundColor: '#68BE92'},
                     headerTitleStyle: {color: 'white'},
                 }}
             />
