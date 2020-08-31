@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "236249221930",
+    "firebase_url": "https://seventhparadigm-6d96e.firebaseio.com",
+    "project_id": "seventhparadigm-6d96e",
+    "storage_bucket": "seventhparadigm-6d96e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:236249221930:android:cfcac09004904a4863ec53",
+        "android_client_info": {
+          "package_name": "com.seventhparadigm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "236249221930-shi0r81t0evk1066tp7e50pnqaukdjar.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDb_8YeGuA6DMAD6YQDyZ1Ft2GbmAFg3no"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "236249221930-shi0r81t0evk1066tp7e50pnqaukdjar.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
