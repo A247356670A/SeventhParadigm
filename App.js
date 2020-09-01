@@ -9,6 +9,8 @@ import 'react-native-gesture-handler';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createStackNavigator} from '@react-navigation/stack';
+import {IconButton, Colors} from 'react-native-paper';
+
 
 //Navigation Install:
 //npm install @react-navigation/native @react-navigation/stack
@@ -16,7 +18,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 
 const HomeScreen = ({navigation}) => {
     return (
-        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+        <View style={styles.taskContainer}>
             <Text style={styles.red}>Home Screen</Text>
             <Button
                 title="Go to Details"
@@ -28,7 +30,7 @@ const HomeScreen = ({navigation}) => {
 
 const HomeDetailStackScreen = ({navigation}) => {
     return (
-        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+        <View style={styles.taskContainer}>
             <Text style={styles.bigBlue}>Home Details Screen</Text>
             {/*<Button title="Go Home" onPress={() => navigation.navigate('Home')} />*/}
             {/*  <Button title="Go to Details" onPress={() => navigation.navigate('Details2')} />*/}
@@ -38,7 +40,7 @@ const HomeDetailStackScreen = ({navigation}) => {
 
 const RecordScreen = ({navigation}) => {
     return (
-        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+        <View style={styles.taskContainer}>
             <Text style={styles.bigBlue}>Record Screen</Text>
             <Button title="Go to Details" onPress={() => navigation.navigate('Record_Details')}/>
         </View>
@@ -47,7 +49,7 @@ const RecordScreen = ({navigation}) => {
 
 const RecordDetailStackScreen = ({navigation}) => {
     return (
-        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+        <View style={styles.taskContainer}>
             <Text style={styles.bigBlue}>Record Details Screen</Text>
             {/*<Button title="Go Home" onPress={() => navigation.navigate('Home')} />*/}
             {/*  <Button title="Go to Details" onPress={() => navigation.navigate('Details2')} />*/}
@@ -57,7 +59,7 @@ const RecordDetailStackScreen = ({navigation}) => {
 
 const SuggestScreen = ({navigation}) => {
     return (
-        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+        <View style={styles.taskContainer}>
             <Text style={styles.bigBlue}>Suggest Screen</Text>
             <Button title="Go to Details" onPress={() => navigation.navigate('Suggest_Details')}/>
         </View>
@@ -66,7 +68,7 @@ const SuggestScreen = ({navigation}) => {
 
 const SuggestDetailStackScreen = ({navigation}) => {
     return (
-        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+        <View style={styles.taskContainer}>
             <Text style={styles.bigBlue}>Suggest Details Screen</Text>
             {/*<Button title="Go Home" onPress={() => navigation.navigate('Home')} />*/}
             {/*  <Button title="Go to Details" onPress={() => navigation.navigate('Details2')} />*/}
@@ -85,19 +87,23 @@ const TaskScreen = ({navigation}) => {
             <Text style={styles.bigBlue}>Tasks Screen</Text>
             <View style={styles.checkboxContainer}>
                 <CheckBox value={isElev} onValueChange={setElev} style={styles.checkbox}/>
-                <Text style={styles.label}>Stairs Not Elevator? {isElev ? '👍' : '👎'}</Text><Button title="?" onPress={() => navigation.navigate('Task_Details')}/>
+                <Text style={styles.label}>Stairs Not Elevator? {isElev ? '👍' : '👎'}</Text><Button title="?"
+                                                                                                     onPress={() => navigation.navigate('Task_Details')}/>
             </View>
             <View style={styles.checkboxContainer}>
                 <CheckBox value={isGym} onValueChange={setGym} style={styles.checkbox}/>
-                <Text style={styles.label}>Going to Gym? {isGym ? '👍' : '👎'}</Text><Button title="?" onPress={() => navigation.navigate('Task_Details')}/>
+                <Text style={styles.label}>Going to Gym? {isGym ? '👍' : '👎'}</Text><Button title="?"
+                                                                                             onPress={() => navigation.navigate('Task_Details')}/>
             </View>
             <View style={styles.checkboxContainer}>
                 <CheckBox value={isDri} onValueChange={setDri} style={styles.checkbox}/>
-                <Text style={styles.label}>Not Driving to Work? {isDri ? '👍' : '👎'}</Text><Button title="?" onPress={() => navigation.navigate('Task_Details')}/>
+                <Text style={styles.label}>Not Driving to Work? {isDri ? '👍' : '👎'}</Text><Button title="?"
+                                                                                                    onPress={() => navigation.navigate('Task_Details')}/>
             </View>
             <View style={styles.checkboxContainer}>
                 <CheckBox value={isCup} onValueChange={setCup} style={styles.checkbox}/>
-                <Text style={styles.label}>Using Your Own Cup? {isCup ? '👍' : '👎'}</Text><Button title="?" onPress={() => navigation.navigate('Task_Details')}/>
+                <Text style={styles.label}>Using Your Own Cup? {isCup ? '👍' : '👎'}</Text><Button title="?"
+                                                                                                   onPress={() => navigation.navigate('Task_Details')}/>
             </View>
         </View>
     );
@@ -105,7 +111,7 @@ const TaskScreen = ({navigation}) => {
 
 const TaskDetailStackScreen = ({navigation}) => {
     return (
-        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+        <View style={styles.taskContainer}>
             <Text style={styles.bigBlue}>Task Details Screen</Text>
             {/*<Button title="Go Home" onPress={() => navigation.navigate('Home')} />*/}
             {/*  <Button title="Go to Details" onPress={() => navigation.navigate('Details2')} />*/}
@@ -115,7 +121,7 @@ const TaskDetailStackScreen = ({navigation}) => {
 
 const RewardScreen = ({navigation}) => {
     return (
-        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+        <View style={styles.taskContainer}>
             <Text style={styles.bigBlue}>Reward Screen</Text>
             <Button title="Go to Details" onPress={() => navigation.navigate('Reward_Details')}/>
         </View>
@@ -123,7 +129,7 @@ const RewardScreen = ({navigation}) => {
 };
 const RewardDetailStackScreen = ({navigation}) => {
     return (
-        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+        <View style={styles.taskContainer}>
             <Text style={styles.bigBlue}>Reward Details Screen</Text>
             {/*<Button title="Go Home" onPress={() => navigation.navigate('Home')} />*/}
             {/*  <Button title="Go to Details" onPress={() => navigation.navigate('Details2')} />*/}
@@ -142,9 +148,42 @@ function HomeStackScreen() {
                 component={HomeScreen}
                 options={{
                     headerTitle: 'Welcome',
-                    headerTitleAlign: 'center',
-                    headerStyle: {backgroundColor: 'green'},
-                    headerTitleStyle: {color: 'white'},
+                    headerTitleAlign: 'left',
+                    headerStyle: {
+                        height: 135,
+                        backgroundColor: '#68BE92',
+                        borderBottomLeftRadius: 80,
+                    },
+                    headerTitleStyle: {
+                        paddingLeft: 35,
+                        paddingTop: 35,
+                        fontSize: 30,
+                        color: 'white',
+                    },
+                    headerRightContainerStyle: {
+                        paddingBottom: 55,
+                        paddingRight: 25,
+
+
+                    },
+                    headerRight: () => (
+                        <View style={{flexDirection: 'row'}}>
+                            {/*<Icon*/}
+                            {/*    name="bars"*/}
+                            {/*    onPress={() => alert('Please login!')}*/}
+                            {/*    color={Colors.white}*/}
+                            {/*    style={{marginRight: 30}}*/}
+                            {/*    size={30}*/}
+                            {/*/>*/}
+                            <Icon
+                                name="user"
+                                onPress={() => alert('Please login!')}
+                                color={Colors.white}
+                                size={30}
+
+                            />
+                        </View>
+                    ),
                 }}
             />
             <HomeStack.Screen
@@ -153,7 +192,7 @@ function HomeStackScreen() {
                 options={{
                     title: 'Home Detail',
                     headerTitleAlign: 'center',
-                    headerStyle: {backgroundColor: 'green'},
+                    headerStyle: {backgroundColor: '#68BE92'},
                     headerTitleStyle: {color: 'white'},
                 }}
             />
@@ -172,7 +211,7 @@ function RecordStackScreen() {
                 options={{
                     title: 'Record',
                     headerTitleAlign: 'center',
-                    headerStyle: {backgroundColor: 'green'},
+                    headerStyle: {backgroundColor: '#68BE92'},
                     headerTitleStyle: {color: 'white'},
                 }}
             />
@@ -182,7 +221,7 @@ function RecordStackScreen() {
                 options={{
                     title: 'Record Detail',
                     headerTitleAlign: 'center',
-                    headerStyle: {backgroundColor: 'green'},
+                    headerStyle: {backgroundColor: '#68BE92'},
                     headerTitleStyle: {color: 'white'},
                 }}
             />
@@ -201,7 +240,7 @@ function SuggestStackScreen() {
                 options={{
                     title: 'Suggest',
                     headerTitleAlign: 'center',
-                    headerStyle: {backgroundColor: 'green'},
+                    headerStyle: {backgroundColor: '#68BE92'},
                     headerTitleStyle: {color: 'white'},
                 }}
             />
@@ -211,7 +250,7 @@ function SuggestStackScreen() {
                 options={{
                     title: 'Suggest Detail',
                     headerTitleAlign: 'center',
-                    headerStyle: {backgroundColor: 'green'},
+                    headerStyle: {backgroundColor: '#68BE92'},
                     headerTitleStyle: {color: 'white'},
                 }}
             />
@@ -230,7 +269,7 @@ function TaskStackScreen() {
                 options={{
                     title: 'Task',
                     headerTitleAlign: 'center',
-                    headerStyle: {backgroundColor: 'green'},
+                    headerStyle: {backgroundColor: '#68BE92'},
                     headerTitleStyle: {color: 'white'},
                 }}
             />
@@ -240,7 +279,7 @@ function TaskStackScreen() {
                 options={{
                     title: 'Task Detail',
                     headerTitleAlign: 'center',
-                    headerStyle: {backgroundColor: 'green'},
+                    headerStyle: {backgroundColor: '#68BE92'},
                     headerTitleStyle: {color: 'white'},
                 }}
             />
@@ -260,7 +299,7 @@ function RewardStackScreen() {
                 options={{
                     title: 'Reward',
                     headerTitleAlign: 'center',
-                    headerStyle: {backgroundColor: 'green'},
+                    headerStyle: {backgroundColor: '#68BE92'},
                     headerTitleStyle: {color: 'white'},
                 }}
             />
@@ -270,7 +309,7 @@ function RewardStackScreen() {
                 options={{
                     title: 'Reward Detail',
                     headerTitleAlign: 'center',
-                    headerStyle: {backgroundColor: 'green'},
+                    headerStyle: {backgroundColor: '#68BE92'},
                     headerTitleStyle: {color: 'white'},
                 }}
             />
@@ -296,16 +335,16 @@ export default function MyBottom() {
                             iconName = focused ? 'leaf' : 'leaf';
                         } else if (route.name === 'Record') {
                             iconName = focused ? 'bar-chart' : 'bar-chart';
-                        }else if (route.name === 'Home') {
+                        } else if (route.name === 'Home') {
                             iconName = focused ? 'home' : 'home';
-                        }else if (route.name === 'Task') {
+                        } else if (route.name === 'Task') {
                             iconName = focused ? 'tasks' : 'tasks';
-                        }else if (route.name === 'Reward') {
+                        } else if (route.name === 'Reward') {
                             iconName = focused ? 'gift' : 'gift';
                         }
 
                         // You can return any component that you like here!
-                        return <Icon   name={iconName} size={size} color={color}/>;
+                        return <Icon name={iconName} size={size} color={color}/>;
                     },
 
 
@@ -355,10 +394,12 @@ const styles = StyleSheet.create({
     red: {
         color: 'red',
     },
+
     taskContainer: {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
+
     },
     checkboxContainer: {
         flexDirection: 'row',
