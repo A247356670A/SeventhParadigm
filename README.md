@@ -24,3 +24,10 @@ react-native link react-native-vector-icons // 自动关联
  Could not initialize class org.codehaus.groovy.reflection.ReflectionCacherr
  
 https://stackoverflow.com/questions/60844245/how-solve-could-not-initialize-class-org-codehaus-groovy-reflection-reflectionc
+
+## Firebase 安装环境
+## Install & setup the app module
+yarn add @react-native-firebase/app
+
+## Install the database module
+yarn add @react-native-firebase/database
