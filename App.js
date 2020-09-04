@@ -146,13 +146,24 @@ const HomeStack = createStackNavigator();
 function HomeStackScreen(navigation) {
 
     const [isHomeModalVisible, setHomeModalVisible] = useState(false);
+    const [isHomeModalVisibleDetail, setHomeModalVisibleDetail] = useState(false);
+
     const toggleModal = () => {
 
         setHomeModalVisible(!isHomeModalVisible);
         // this.isUserLogin = false;
     };
+    const toggleModalDetail = () => {
+
+        setHomeModalVisibleDetail(!isHomeModalVisibleDetail);
+        // this.isUserLogin = false;
+    };
     const userLogin = () => {
         setHomeModalVisible(!isHomeModalVisible);
+        this.isUserLogin = true;
+    }
+    const userLoginDetail = () => {
+        setHomeModalVisibleDetail(!isHomeModalVisibleDetail);
         this.isUserLogin = true;
     }
     let iconName;
@@ -194,14 +205,22 @@ function HomeStackScreen(navigation) {
                                 size={30}
 
                             />
-                            <Modal isVisible={isHomeModalVisible && !isUserLogin}>
-                                <View style={{flex: 1}}>
-                                    <Text>login!</Text>
 
+                            <Modal style={styles.login} isVisible={isHomeModalVisible && !isUserLogin}>
+                                <View>
+                                    <Button title="back" onPress={toggleModal} />
+                                </View>
+                                <View style = {{flex: 1}}>
+                                    <Text>login!</Text>
+                                    <Text>email address</Text>
+                                    <Text>password</Text>
+
+                                </View>
+                                <View style = {{flex: 1}}>
                                     <Button title="login" onPress={userLogin} />
                                 </View>
                             </Modal>
-                            <Modal isVisible={isHomeModalVisible && isUserLogin}>
+                            <Modal style={styles.login} isVisible={isHomeModalVisible && isUserLogin}>
                                 <View style={{flex: 3}}>
                                     <Text>Hello!</Text>
 
@@ -244,23 +263,30 @@ function HomeStackScreen(navigation) {
 
                             <Icon
                                 name= {iconName}
-                                onPress={toggleModal}
+                                onPress={toggleModalDetail}
                                 color={Colors.white}
                                 size={30}
 
                             />
-                            <Modal isVisible={isHomeModalVisible && !isUserLogin}>
-                                <View style={{flex: 1}}>
+                            <Modal style={styles.login} isVisible={isHomeModalVisibleDetail && !isUserLogin}>
+                                <View>
+                                    <Button title="back" onPress={toggleModalDetail} />
+                                </View>
+                                <View style = {{flex: 1}}>
                                     <Text>login!</Text>
+                                    <Text>email address</Text>
+                                    <Text>password</Text>
 
-                                    <Button title="login" onPress={userLogin} />
+                                </View>
+                                <View style = {{flex: 1}}>
+                                    <Button title="login" onPress={userLoginDetail} />
                                 </View>
                             </Modal>
-                            <Modal isVisible={isHomeModalVisible && isUserLogin}>
+                            <Modal style={styles.login} isVisible={isHomeModalVisibleDetail && isUserLogin}>
                                 <View style={{flex: 3}}>
                                     <Text>Hello!</Text>
 
-                                    <Button title="Hide modal" onPress={toggleModal} />
+                                    <Button title="Hide modal" onPress={toggleModalDetail} />
                                 </View>
                             </Modal>
                         </View>
@@ -864,6 +890,18 @@ const styles = StyleSheet.create({
     },
     red: {
         color: 'red',
+    },
+    login:{
+        display: "flex",
+        position: "absolute",
+        borderRadius:20,
+        padding: "10%",
+        width: "80%",
+        height: "85%",
+        left: "5%",
+        top: "5%",
+        backgroundColor: "white",
+
     },
 
     taskContainer: {
