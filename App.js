@@ -2,7 +2,7 @@ import * as React from 'react';
 import {useState} from 'react';
 import {BlurView} from 'expo-blur';
 
-import {CheckBox, StyleSheet, Button, View, Text} from 'react-native';
+import {CheckBox, StyleSheet, Button, View, Text, SafeAreaView, ScrollView } from 'react-native';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 import 'react-native-gesture-handler';
@@ -11,6 +11,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createStackNavigator} from '@react-navigation/stack';
 import {IconButton, Colors} from 'react-native-paper';
 import Modal from 'react-native-modal';
+import Constants from 'expo-constants';
 
 //Navigation Install:
 //npm install @react-navigation/native @react-navigation/stack
@@ -20,6 +21,7 @@ global.isUserLogin = false;
 const HomeScreen = ({navigation}) => {
     return (
         <View style={styles.taskContainer}>
+
             <Text style={styles.red}>Home Screen</Text>
             <Button
                 title="Go to Details"
@@ -42,10 +44,51 @@ const HomeDetailStackScreen = ({navigation}) => {
 
 const RecordScreen = ({navigation}) => {
     return (
-        <View style={styles.taskContainer}>
-            <Text style={styles.bigBlue}>Record Screen</Text>
-            <Button title="Go to Details" onPress={() => navigation.navigate('Record_Details')}/>
+        <ScrollView
+                style={styles.scrollViewStyle}
+                // horizontal={true}
+                // pagingEnabled={true}
+            >
+        <View style = {styles.record01}>
+            <Text>your rec11ord</Text>
+            <Text>your rec11ord</Text>
+            <Text>your rec11ord</Text>
+            <Text>your rec11ord</Text>
+            <Text>your rec11ordL</Text>
+            <Text>your rec11ord</Text>
+            <Text>your rec11ordL</Text>
+            <Text>your rec11ord</Text>
+            <Text>your rec11ordL</Text>
+            <Text>your rec11ord</Text>
+            <Text>your rec11ordL</Text>
+            <Text>your rec11ord</Text>
+            <Text>your rec11ordL</Text>
+            {/*<View >*/}
+            {/*    <Text>your rec11ord</Text>*/}
+            {/*</View>*/}
+            {/*<View style = {styles.record01}>*/}
+            {/*    <Text>your record1</Text>*/}
+            {/*</View>*/}
+            {/*<Text style={styles.bigBlue}>Record Screen</Text>*/}
+            {/*<Button title="Go to Details" onPress={() => navigation.navigate('Record_Details')}/>*/}
+
         </View>
+        <View style = {styles.record01}>
+            <Text>your rec11ord</Text>
+            <Text>your rec11ordL</Text>
+            <Text>your rec11ord</Text>
+            <Text>your rec11ordL</Text>
+            <Text>your rec11ord</Text>
+            <Text>your rec11ordL</Text>
+            <Text>your rec11ord</Text>
+            <Text>your rec11ordL</Text>
+            <Text>your rec11ord</Text>
+            <Text>your rec11ordL</Text>
+            <Text>your rec11ord</Text>
+            <Text>your rec11ordL</Text>
+
+        </View>
+        </ScrollView>
     );
 };
 
@@ -883,6 +926,11 @@ const styles = StyleSheet.create({
     container: {
         marginTop: 50,
     },
+
+    scrollViewStyle: {
+        flex: 1,
+
+    },
     bigBlue: {
         color: 'blue',
         fontWeight: 'bold',
@@ -910,6 +958,23 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
 
     },
+    record01:{
+        paddingTop:"5%",
+        paddingBottom:"5%",
+        marginTop:"8%",
+        borderTopRightRadius:15,
+        borderBottomRightRadius:15,
+
+        backgroundColor:"white",
+        left:0,
+        width:"90%",
+        // height:"60%",
+        // minHeight:"60%",
+        // maxHeight:"70%",
+
+
+    },
+
     checkboxContainer: {
         flexDirection: 'row',
         marginBottom: 20,
