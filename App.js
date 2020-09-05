@@ -13,6 +13,16 @@ import {IconButton, Colors} from 'react-native-paper';
 import Modal from 'react-native-modal';
 import Constants from 'expo-constants';
 
+import {
+    LineChart,
+    BarChart,
+    PieChart,
+    ProgressChart,
+    ContributionGraph,
+    StackedBarChart
+} from "react-native-chart-kit";
+import Dimensions from "react-native/Libraries/Settings/Settings.android";
+
 //Navigation Install:
 //npm install @react-navigation/native @react-navigation/stack
 //npm install react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view
@@ -43,6 +53,17 @@ const HomeDetailStackScreen = ({navigation}) => {
 };
 
 const RecordScreen = ({navigation}) => {
+    const chartConfig = {
+        backgroundGradientFrom: "#1E2923",
+        backgroundGradientFromOpacity: 0,
+        backgroundGradientTo: "#08130D",
+        backgroundGradientToOpacity: 0.5,
+        color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
+        strokeWidth: 2, // optional, default 3
+        barPercentage: 0.5,
+        useShadowColorFromDataset: false // optional
+    };
+
     return (
         <ScrollView
                 style={styles.scrollViewStyle}
@@ -51,18 +72,24 @@ const RecordScreen = ({navigation}) => {
             >
         <View style = {styles.record01}>
             <Text>your rec11ord</Text>
-            <Text>your rec11ord</Text>
-            <Text>your rec11ord</Text>
-            <Text>your rec11ord</Text>
-            <Text>your rec11ordL</Text>
-            <Text>your rec11ord</Text>
-            <Text>your rec11ordL</Text>
-            <Text>your rec11ord</Text>
-            <Text>your rec11ordL</Text>
-            <Text>your rec11ord</Text>
-            <Text>your rec11ordL</Text>
-            <Text>your rec11ord</Text>
-            <Text>your rec11ordL</Text>
+            <BarChart
+                data={{
+                    labels: ["January", "February", "March", "April", "May", "June"],
+                    datasets: [
+                        {
+                            data: [20, 45, 28, 80, 99, 43]
+                        }
+                    ]
+                }}
+                // width={Dimensions.get("window").width} // from react-native
+                // style={graphStyle}
+                width={200}
+                height={220}
+                yAxisLabel="$"
+                chartConfig={chartConfig}
+                verticalLabelRotation={30}
+            />
+
             {/*<View >*/}
             {/*    <Text>your rec11ord</Text>*/}
             {/*</View>*/}
