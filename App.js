@@ -2,8 +2,9 @@ import * as React from 'react';
 import {useState} from 'react';
 import {BlurView} from 'expo-blur';
 
-import {CheckBox, StyleSheet, Button, View, Text, SafeAreaView, ScrollView } from 'react-native';
+import {CheckBox, StyleSheet, Button, View, Text, Image, BVLinearGradient, SafeAreaView, ScrollView} from 'react-native';
 
+import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import 'react-native-gesture-handler';
 import {NavigationContainer} from '@react-navigation/native';
@@ -19,25 +20,107 @@ import {
     PieChart,
     ProgressChart,
     ContributionGraph,
-    StackedBarChart
-} from "react-native-chart-kit";
-import Dimensions from "react-native/Libraries/Settings/Settings.android";
+    StackedBarChart,
+} from 'react-native-chart-kit';
+import Dimensions from 'react-native/Libraries/Settings/Settings.android';
 
 //Navigation Install:
 //npm install @react-navigation/native @react-navigation/stack
 //npm install react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view
+//font Montserrat
 global.isUserLogin = false;
 
 const HomeScreen = ({navigation}) => {
     return (
         <View style={styles.taskContainer}>
+            <View style={styles.taskContainer}>
+                <Text style={{
+                    fontFamily: "Montserrat",
+                    marginTop:"28%",
+                    marginBottom:"1%",
+                    color: 'black',
+                    fontSize: 21,
+                    fontWeight: 'bold',
+                    }}>Welcome to
+                </Text>
+                <Text style={{
+                    paddingBottom:"1%",
+                    marginBottom:"1%",
+                    color: 'black',
+                    fontSize: 21,
+                    fontWeight: 'bold',}}>CO2 emission control system
+                </Text>
+                <Text style={{
+                    marginBottom:"1%",
+                    color: 'black',
+                    fontSize: 17,}}>Today your level is
+                </Text>
 
-            <Text style={styles.red}>Home Screen</Text>
-            <Button
-                title="Go to Details"
-                onPress={() => navigation.navigate('Home_Details')}
+            </View>
+            <View style={{
+                zIndex: 10,
+                marginTop:"25%",
+                backgroundColor:"#009966",
+                alignItems: 'center',
+                justifyContent: 'center',
+                width:225,
+                height:225,
+                borderRadius: 225/2,
+            }}>
+            <View style={{
+                zIndex: 99,
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundColor:"#8ee6b6",
+                backgroundGradientFrom: "#8ee6b6",
+                backgroundGradientFromOpacity: 0.5,
+                backgroundGradientTo: "#5fd393",
+                backgroundGradientToOpacity: 0.5,
+                width:200,
+                height:200,
+                borderRadius: 100,
+            }}>
+                <Image style= {{
+                    zIndex: 0,
+                    marginBottom:"40%",
+                    width: "80%",
+                    height: "40%",
 
-            />
+                }} source={require('./image/five_starts.png')}/>
+            </View>
+            </View>
+
+            <View style={styles.taskContainer}>
+                <Text style={{
+                    marginTop:"15%",
+                    paddingBottom:"2%",
+                    color: 'black',
+                    fontSize: 21,
+                    fontWeight: 'bold',
+                }}>Congratulations!</Text>
+                <Text style={{
+                    paddingBottom:"2%",
+                    color: 'black',
+                    fontSize: 21,
+                    fontWeight: 'bold',
+                }}>Please keep it up</Text>
+            </View>
+            <View style={{
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginTop:"15%",
+            }}>
+                <Button
+
+                    title="scan"
+                    onPress={() => navigation.navigate('Home_Details')}
+
+                />
+            </View>
+            <View style={styles.taskContainer}></View>
+            <View style={styles.taskContainer}></View>
+            {/*<Text style={styles.red}>Home Screen</Text>*/}
+
         </View>
     );
 };
@@ -53,68 +136,59 @@ const HomeDetailStackScreen = ({navigation}) => {
 };
 
 const RecordScreen = ({navigation}) => {
+
     const chartConfig = {
-        backgroundGradientFrom: "#1E2923",
+        backgroundGradientFrom: '#1E2923',
         backgroundGradientFromOpacity: 1,
-        backgroundGradientTo: "#1E2923",
+        backgroundGradientTo: '#1E2923',
         backgroundGradientToOpacity: 1,
         color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
         strokeWidth: 2, // optional, default 3
         barPercentage: 0.5,
-        useShadowColorFromDataset: false // optional
+        useShadowColorFromDataset: false, // optional
     };
 
     return (
         <ScrollView
-                style={styles.scrollViewStyle}
-                // horizontal={true}
-                // pagingEnabled={true}
-            >
-        <View style = {styles.record01}>
-            <Text>your rec11ord</Text>
-            <BarChart
-                data={{
-                    labels: ["January", "February", "March", "April", "May", "June"],
-                    datasets: [
-                        {
-                            data: [20, 45, 28, 80, 99, 43]
-                        }
-                    ]
-                }}
-                // width={Dimensions.get("window").width} // from react-native
-                // style={graphStyle}
-                width={350}
-                height={250}
-                yAxisLabel="$"
-                chartConfig={chartConfig}
-                verticalLabelRotation={30}
-            />
+            style={styles.scrollViewStyle}
+            // horizontal={true}
+            // pagingEnabled={true}
+        >
+            <View style={styles.record01}>
+                <Text>your rec11ord</Text>
+                <BarChart
+                    data={{
+                        labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+                        datasets: [
+                            {
+                                data: [20, 45, 28, 80, 99, 43],
+                            },
+                        ],
+                    }}
+                    // width={Dimensions.get("window").width} // from react-native
+                    // style={graphStyle}
+                    width={350}
+                    height={250}
+                    yAxisLabel="$"
+                    chartConfig={chartConfig}
+                    verticalLabelRotation={30}
+                />
 
-            {/*<View >*/}
-            {/*    <Text>your rec11ord</Text>*/}
-            {/*</View>*/}
-            {/*<View style = {styles.record01}>*/}
-            {/*    <Text>your record1</Text>*/}
-            {/*</View>*/}
-            {/*<Text style={styles.bigBlue}>Record Screen</Text>*/}
-            {/*<Button title="Go to Details" onPress={() => navigation.navigate('Record_Details')}/>*/}
+                {/*<View >*/}
+                {/*    <Text>your rec11ord</Text>*/}
+                {/*</View>*/}
+                {/*<View style = {styles.record01}>*/}
+                {/*    <Text>your record1</Text>*/}
+                {/*</View>*/}
+                {/*<Text style={styles.bigBlue}>Record Screen</Text>*/}
+                {/*<Button title="Go to Details" onPress={() => navigation.navigate('Record_Details')}/>*/}
 
-        </View>
-        <View style = {styles.record01}>
-            <Text>your rec11ord</Text>
-            <Text>your rec11ordL</Text>
-            <Text>your rec11ord</Text>
-            <Text>your rec11ordL</Text>
-            <Text>your rec11ord</Text>
-            <Text>your rec11ordL</Text>
-            <Text>your rec11ord</Text>
-            <Text>your rec11ordL</Text>
-            <Text>your rec11ord</Text>
-            <Text>your rec11ordL</Text>
-            <Text>your rec11ord</Text>
-            <Text>your rec11ordL</Text>
+            </View>
+            <View style={styles.record01}>
+                <Text>your rec11ord</Text>
+                <Text>your rec11ordL</Text>
 
-        </View>
+            </View>
         </ScrollView>
     );
 };
@@ -231,16 +305,16 @@ function HomeStackScreen(navigation) {
     const userLogin = () => {
         setHomeModalVisible(!isHomeModalVisible);
         this.isUserLogin = true;
-    }
+    };
     const userLoginDetail = () => {
         setHomeModalVisibleDetail(!isHomeModalVisibleDetail);
         this.isUserLogin = true;
-    }
+    };
     let iconName;
-    if(isUserLogin){
-        iconName = "user"
-    }else {
-        iconName = "user-o"
+    if (isUserLogin) {
+        iconName = 'user';
+    } else {
+        iconName = 'user-o';
     }
     return (
         <HomeStack.Navigator>
@@ -269,7 +343,7 @@ function HomeStackScreen(navigation) {
                         <View style={{flexDirection: 'row'}}>
 
                             <Icon
-                                name= {iconName}
+                                name={iconName}
                                 onPress={toggleModal}
                                 color={Colors.white}
                                 size={30}
@@ -278,23 +352,23 @@ function HomeStackScreen(navigation) {
 
                             <Modal style={styles.login} isVisible={isHomeModalVisible && !isUserLogin}>
                                 <View>
-                                    <Button title="back" onPress={toggleModal} />
+                                    <Button title="back" onPress={toggleModal}/>
                                 </View>
-                                <View style = {{flex: 1}}>
+                                <View style={{flex: 1}}>
                                     <Text>login!</Text>
                                     <Text>email address</Text>
                                     <Text>password</Text>
 
                                 </View>
-                                <View style = {{flex: 1}}>
-                                    <Button title="login" onPress={userLogin} />
+                                <View style={{flex: 1}}>
+                                    <Button title="login" onPress={userLogin}/>
                                 </View>
                             </Modal>
                             <Modal style={styles.login} isVisible={isHomeModalVisible && isUserLogin}>
                                 <View style={{flex: 3}}>
                                     <Text>Hello!</Text>
 
-                                    <Button title="Hide modal" onPress={toggleModal} />
+                                    <Button title="Hide modal" onPress={toggleModal}/>
                                 </View>
                             </Modal>
                         </View>
@@ -318,7 +392,7 @@ function HomeStackScreen(navigation) {
                         fontSize: 30,
                     },
                     headerTintColor: 'white',
-                    headerLeftContainerStyle:{
+                    headerLeftContainerStyle: {
                         paddingLeft: 15,
                         paddingBottom: 55,
                         size: 300,
@@ -332,7 +406,7 @@ function HomeStackScreen(navigation) {
                         <View style={{flexDirection: 'row'}}>
 
                             <Icon
-                                name= {iconName}
+                                name={iconName}
                                 onPress={toggleModalDetail}
                                 color={Colors.white}
                                 size={30}
@@ -340,23 +414,23 @@ function HomeStackScreen(navigation) {
                             />
                             <Modal style={styles.login} isVisible={isHomeModalVisibleDetail && !isUserLogin}>
                                 <View>
-                                    <Button title="back" onPress={toggleModalDetail} />
+                                    <Button title="back" onPress={toggleModalDetail}/>
                                 </View>
-                                <View style = {{flex: 1}}>
+                                <View style={{flex: 1}}>
                                     <Text>login!</Text>
                                     <Text>email address</Text>
                                     <Text>password</Text>
 
                                 </View>
-                                <View style = {{flex: 1}}>
-                                    <Button title="login" onPress={userLoginDetail} />
+                                <View style={{flex: 1}}>
+                                    <Button title="login" onPress={userLoginDetail}/>
                                 </View>
                             </Modal>
                             <Modal style={styles.login} isVisible={isHomeModalVisibleDetail && isUserLogin}>
                                 <View style={{flex: 3}}>
                                     <Text>Hello!</Text>
 
-                                    <Button title="Hide modal" onPress={toggleModalDetail} />
+                                    <Button title="Hide modal" onPress={toggleModalDetail}/>
                                 </View>
                             </Modal>
                         </View>
@@ -379,12 +453,12 @@ function RecordStackScreen() {
     const userLogin = () => {
         setRecordModalVisible(!isRecordModalVisible);
         this.isUserLogin = true;
-    }
+    };
     let iconName;
-    if(isUserLogin){
-        iconName = "user"
-    }else {
-        iconName = "user-o"
+    if (isUserLogin) {
+        iconName = 'user';
+    } else {
+        iconName = 'user-o';
     }
     return (
         <RecordStack.Navigator>
@@ -413,7 +487,7 @@ function RecordStackScreen() {
                         <View style={{flexDirection: 'row'}}>
 
                             <Icon
-                                name= {iconName}
+                                name={iconName}
                                 onPress={toggleModal}
                                 color={Colors.white}
                                 size={30}
@@ -423,14 +497,14 @@ function RecordStackScreen() {
                                 <View style={{flex: 1}}>
                                     <Text>login!</Text>
 
-                                    <Button title="login" onPress={userLogin} />
+                                    <Button title="login" onPress={userLogin}/>
                                 </View>
                             </Modal>
                             <Modal isVisible={isRecordModalVisible && isUserLogin}>
                                 <View style={{flex: 3}}>
                                     <Text>Hello!</Text>
 
-                                    <Button title="Hide modal" onPress={toggleModal} />
+                                    <Button title="Hide modal" onPress={toggleModal}/>
                                 </View>
                             </Modal>
                         </View>
@@ -454,7 +528,7 @@ function RecordStackScreen() {
                         fontSize: 30,
                     },
                     headerTintColor: 'white',
-                    headerLeftContainerStyle:{
+                    headerLeftContainerStyle: {
                         paddingLeft: 15,
                         paddingBottom: 55,
                         size: 300,
@@ -468,7 +542,7 @@ function RecordStackScreen() {
                         <View style={{flexDirection: 'row'}}>
 
                             <Icon
-                                name= {iconName}
+                                name={iconName}
                                 onPress={toggleModal}
                                 color={Colors.white}
                                 size={30}
@@ -478,14 +552,14 @@ function RecordStackScreen() {
                                 <View style={{flex: 1}}>
                                     <Text>login!</Text>
 
-                                    <Button title="login" onPress={userLogin} />
+                                    <Button title="login" onPress={userLogin}/>
                                 </View>
                             </Modal>
                             <Modal isVisible={isRecordModalVisible && isUserLogin}>
                                 <View style={{flex: 3}}>
                                     <Text>Hello!</Text>
 
-                                    <Button title="Hide modal" onPress={toggleModal} />
+                                    <Button title="Hide modal" onPress={toggleModal}/>
                                 </View>
                             </Modal>
                         </View>
@@ -508,12 +582,12 @@ function SuggestStackScreen() {
     const userLogin = () => {
         setSuggestModalVisible(!isSuggestModalVisible);
         this.isUserLogin = true;
-    }
+    };
     let iconName;
-    if(isUserLogin){
-        iconName = "user"
-    }else {
-        iconName = "user-o"
+    if (isUserLogin) {
+        iconName = 'user';
+    } else {
+        iconName = 'user-o';
     }
     return (
         <SuggestStack.Navigator>
@@ -542,7 +616,7 @@ function SuggestStackScreen() {
                         <View style={{flexDirection: 'row'}}>
 
                             <Icon
-                                name= {iconName}
+                                name={iconName}
                                 onPress={toggleModal}
                                 color={Colors.white}
                                 size={30}
@@ -552,14 +626,14 @@ function SuggestStackScreen() {
                                 <View style={{flex: 1}}>
                                     <Text>login!</Text>
 
-                                    <Button title="login" onPress={userLogin} />
+                                    <Button title="login" onPress={userLogin}/>
                                 </View>
                             </Modal>
                             <Modal isVisible={isSuggestModalVisible && isUserLogin}>
                                 <View style={{flex: 3}}>
                                     <Text>Hello!</Text>
 
-                                    <Button title="Hide modal" onPress={toggleModal} />
+                                    <Button title="Hide modal" onPress={toggleModal}/>
                                 </View>
                             </Modal>
                         </View>
@@ -583,7 +657,7 @@ function SuggestStackScreen() {
                         fontSize: 30,
                     },
                     headerTintColor: 'white',
-                    headerLeftContainerStyle:{
+                    headerLeftContainerStyle: {
                         paddingLeft: 15,
                         paddingBottom: 55,
                         size: 300,
@@ -597,7 +671,7 @@ function SuggestStackScreen() {
                         <View style={{flexDirection: 'row'}}>
 
                             <Icon
-                                name= {iconName}
+                                name={iconName}
                                 onPress={toggleModal}
                                 color={Colors.white}
                                 size={30}
@@ -607,14 +681,14 @@ function SuggestStackScreen() {
                                 <View style={{flex: 1}}>
                                     <Text>login!</Text>
 
-                                    <Button title="login" onPress={userLogin} />
+                                    <Button title="login" onPress={userLogin}/>
                                 </View>
                             </Modal>
                             <Modal isVisible={isSuggestModalVisible && isUserLogin}>
                                 <View style={{flex: 3}}>
                                     <Text>Hello!</Text>
 
-                                    <Button title="Hide modal" onPress={toggleModal} />
+                                    <Button title="Hide modal" onPress={toggleModal}/>
                                 </View>
                             </Modal>
                         </View>
@@ -637,12 +711,12 @@ function TaskStackScreen() {
     const userLogin = () => {
         setTaskModalVisible(!isTaskModalVisible);
         this.isUserLogin = true;
-    }
+    };
     let iconName;
-    if(isUserLogin){
-        iconName = "user"
-    }else {
-        iconName = "user-o"
+    if (isUserLogin) {
+        iconName = 'user';
+    } else {
+        iconName = 'user-o';
     }
     return (
         <TaskStack.Navigator>
@@ -671,7 +745,7 @@ function TaskStackScreen() {
                         <View style={{flexDirection: 'row'}}>
 
                             <Icon
-                                name= {iconName}
+                                name={iconName}
                                 onPress={toggleModal}
                                 color={Colors.white}
                                 size={30}
@@ -681,14 +755,14 @@ function TaskStackScreen() {
                                 <View style={{flex: 1}}>
                                     <Text>login!</Text>
 
-                                    <Button title="login" onPress={userLogin} />
+                                    <Button title="login" onPress={userLogin}/>
                                 </View>
                             </Modal>
                             <Modal isVisible={isTaskModalVisible && isUserLogin}>
                                 <View style={{flex: 3}}>
                                     <Text>Hello!</Text>
 
-                                    <Button title="Hide modal" onPress={toggleModal} />
+                                    <Button title="Hide modal" onPress={toggleModal}/>
                                 </View>
                             </Modal>
                         </View>
@@ -712,7 +786,7 @@ function TaskStackScreen() {
                         fontSize: 30,
                     },
                     headerTintColor: 'white',
-                    headerLeftContainerStyle:{
+                    headerLeftContainerStyle: {
                         paddingLeft: 15,
                         paddingBottom: 55,
                         size: 300,
@@ -726,7 +800,7 @@ function TaskStackScreen() {
                         <View style={{flexDirection: 'row'}}>
 
                             <Icon
-                                name= {iconName}
+                                name={iconName}
                                 onPress={toggleModal}
                                 color={Colors.white}
                                 size={30}
@@ -736,14 +810,14 @@ function TaskStackScreen() {
                                 <View style={{flex: 1}}>
                                     <Text>login!</Text>
 
-                                    <Button title="login" onPress={userLogin} />
+                                    <Button title="login" onPress={userLogin}/>
                                 </View>
                             </Modal>
                             <Modal isVisible={isTaskModalVisible && isUserLogin}>
                                 <View style={{flex: 3}}>
                                     <Text>Hello!</Text>
 
-                                    <Button title="Hide modal" onPress={toggleModal} />
+                                    <Button title="Hide modal" onPress={toggleModal}/>
                                 </View>
                             </Modal>
                         </View>
@@ -767,12 +841,12 @@ function RewardStackScreen() {
     const userLogin = () => {
         setRewardModalVisible(!isRewardModalVisible);
         this.isUserLogin = true;
-    }
+    };
     let iconName;
-    if(isUserLogin){
-        iconName = "user"
-    }else {
-        iconName = "user-o"
+    if (isUserLogin) {
+        iconName = 'user';
+    } else {
+        iconName = 'user-o';
     }
     return (
         <RewardStack.Navigator>
@@ -801,7 +875,7 @@ function RewardStackScreen() {
                         <View style={{flexDirection: 'row'}}>
 
                             <Icon
-                                name= {iconName}
+                                name={iconName}
                                 onPress={toggleModal}
                                 color={Colors.white}
                                 size={30}
@@ -811,14 +885,14 @@ function RewardStackScreen() {
                                 <View style={{flex: 1}}>
                                     <Text>login!</Text>
 
-                                    <Button title="login" onPress={userLogin} />
+                                    <Button title="login" onPress={userLogin}/>
                                 </View>
                             </Modal>
                             <Modal isVisible={isRewardModalVisible && isUserLogin}>
                                 <View style={{flex: 3}}>
                                     <Text>Hello!</Text>
 
-                                    <Button title="Hide modal" onPress={toggleModal} />
+                                    <Button title="Hide modal" onPress={toggleModal}/>
                                 </View>
                             </Modal>
                         </View>
@@ -842,7 +916,7 @@ function RewardStackScreen() {
                         fontSize: 30,
                     },
                     headerTintColor: 'white',
-                    headerLeftContainerStyle:{
+                    headerLeftContainerStyle: {
                         paddingLeft: 15,
                         paddingBottom: 55,
                         size: 300,
@@ -856,7 +930,7 @@ function RewardStackScreen() {
                         <View style={{flexDirection: 'row'}}>
 
                             <Icon
-                                name= {iconName}
+                                name={iconName}
                                 onPress={toggleModal}
                                 color={Colors.white}
                                 size={30}
@@ -866,14 +940,14 @@ function RewardStackScreen() {
                                 <View style={{flex: 1}}>
                                     <Text>login!</Text>
 
-                                    <Button title="login" onPress={userLogin} />
+                                    <Button title="login" onPress={userLogin}/>
                                 </View>
                             </Modal>
                             <Modal isVisible={isRewardModalVisible && isUserLogin}>
                                 <View style={{flex: 3}}>
                                     <Text>Hello!</Text>
 
-                                    <Button title="Hide modal" onPress={toggleModal} />
+                                    <Button title="Hide modal" onPress={toggleModal}/>
                                 </View>
                             </Modal>
                         </View>
@@ -889,71 +963,76 @@ function RewardStackScreen() {
 const Tab = createBottomTabNavigator();
 
 export default function MyBottom() {
-        return (
-            <NavigationContainer>
-                <Tab.Navigator
-                    initialRouteName='Home'
-                    screenOptions={({route}) => ({
-                        tabBarIcon: ({focused, color, size}) => {
-                            let iconName;
+    return (
+        <NavigationContainer>
+            <Tab.Navigator
+                initialRouteName='Home'
+                screenOptions={({route}) => ({
+                    tabBarIcon: ({focused, color, size}) => {
+                        let iconName;
 
-                            if (route.name === 'Suggest') {
-                                iconName = focused ? 'leaf' : 'leaf';
-                            } else if (route.name === 'Record') {
-                                iconName = focused ? 'bar-chart' : 'bar-chart';
-                            } else if (route.name === 'Home') {
-                                iconName = focused ? 'home' : 'home';
-                            } else if (route.name === 'Task') {
-                                iconName = focused ? 'tasks' : 'tasks';
-                            } else if (route.name === 'Reward') {
-                                iconName = focused ? 'gift' : 'gift';
-                            }
+                        if (route.name === 'Suggest') {
+                            iconName = focused ? 'leaf' : 'leaf';
+                        } else if (route.name === 'Record') {
+                            iconName = focused ? 'bar-chart' : 'bar-chart';
+                        } else if (route.name === 'Home') {
+                            iconName = focused ? 'home' : 'home';
+                        } else if (route.name === 'Task') {
+                            iconName = focused ? 'tasks' : 'tasks';
+                        } else if (route.name === 'Reward') {
+                            iconName = focused ? 'gift' : 'gift';
+                        }
 
-                            // You can return any component that you like here!
-                            return <Icon name={iconName} size={size} color={color}/>;
-                        },
+                        // You can return any component that you like here!
+                        return <Icon name={iconName} size={size} color={color}/>;
+                    },
 
 
-                    })}
+                })}
 
-                    tabBarOptions={{
-                        showIcon: true,
-                        activeTintColor: 'tomato',
-                        inactiveTintColor: 'black',
-                    }}
-                >
+                tabBarOptions={{
+                    showIcon: true,
+                    activeTintColor: 'tomato',
+                    inactiveTintColor: 'black',
+                }}
+            >
 
-                    <Tab.Screen
-                        name="Suggest"
-                        component={SuggestStackScreen}
-                    />
-                    <Tab.Screen
-                        name="Record"
-                        component={RecordStackScreen}
-                    />
-                    <Tab.Screen
-                        name="Home"
-                        component={HomeStackScreen}
-                    />
-                    <Tab.Screen
-                        name="Task"
-                        component={TaskStackScreen}
-                    />
-                    <Tab.Screen
-                        name="Reward"
-                        component={RewardStackScreen}
-                    />
+                <Tab.Screen
+                    name="Suggest"
+                    component={SuggestStackScreen}
+                />
+                <Tab.Screen
+                    name="Record"
+                    component={RecordStackScreen}
+                />
+                <Tab.Screen
+                    name="Home"
+                    component={HomeStackScreen}
+                />
+                <Tab.Screen
+                    name="Task"
+                    component={TaskStackScreen}
+                />
+                <Tab.Screen
+                    name="Reward"
+                    component={RewardStackScreen}
+                />
 
-                </Tab.Navigator>
-            </NavigationContainer>
-        );
+            </Tab.Navigator>
+        </NavigationContainer>
+    );
 };
 
 const styles = StyleSheet.create({
     container: {
         marginTop: 50,
     },
+    taskContainer: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
 
+    },
     scrollViewStyle: {
         flex: 1,
 
@@ -966,35 +1045,30 @@ const styles = StyleSheet.create({
     red: {
         color: 'red',
     },
-    login:{
-        display: "flex",
-        position: "absolute",
-        borderRadius:20,
-        padding: "10%",
-        width: "80%",
-        height: "85%",
-        left: "5%",
-        top: "5%",
-        backgroundColor: "white",
+    login: {
+        display: 'flex',
+        position: 'absolute',
+        borderRadius: 20,
+        padding: '10%',
+        width: '80%',
+        height: '85%',
+        left: '5%',
+        top: '5%',
+        backgroundColor: 'white',
 
     },
 
-    taskContainer: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
 
-    },
-    record01:{
-        paddingTop:"5%",
-        paddingBottom:"5%",
-        marginTop:"8%",
-        borderTopRightRadius:15,
-        borderBottomRightRadius:15,
+    record01: {
+        paddingTop: '5%',
+        paddingBottom: '5%',
+        marginTop: '8%',
+        borderTopRightRadius: 15,
+        borderBottomRightRadius: 15,
 
-        backgroundColor:"white",
-        left:0,
-        width:"90%",
+        backgroundColor: 'white',
+        left: 0,
+        width: '90%',
         // height:"60%",
         // minHeight:"60%",
         // maxHeight:"70%",
