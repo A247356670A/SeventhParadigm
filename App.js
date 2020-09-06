@@ -55,9 +55,9 @@ const HomeDetailStackScreen = ({navigation}) => {
 const RecordScreen = ({navigation}) => {
     const chartConfig = {
         backgroundGradientFrom: "#1E2923",
-        backgroundGradientFromOpacity: 0,
-        backgroundGradientTo: "#08130D",
-        backgroundGradientToOpacity: 0.5,
+        backgroundGradientFromOpacity: 1,
+        backgroundGradientTo: "#1E2923",
+        backgroundGradientToOpacity: 1,
         color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
         strokeWidth: 2, // optional, default 3
         barPercentage: 0.5,
@@ -83,8 +83,8 @@ const RecordScreen = ({navigation}) => {
                 }}
                 // width={Dimensions.get("window").width} // from react-native
                 // style={graphStyle}
-                width={200}
-                height={220}
+                width={350}
+                height={250}
                 yAxisLabel="$"
                 chartConfig={chartConfig}
                 verticalLabelRotation={30}
