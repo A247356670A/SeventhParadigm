@@ -29,8 +29,20 @@ import Dimensions from 'react-native/Libraries/Settings/Settings.android';
 //npm install react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view
 //font Montserrat
 global.isUserLogin = false;
+global.userScore = 0; //userScore determines the user's star rating
+global.homeImgPath = './image/five_starts.png';
 
 const HomeScreen = ({navigation}) => {
+    var path = '';
+    if(userScore == 20){
+     path = require('./image/two_star.png');
+    } else if(userScore == 30){
+     path = require('./image/three_star.png');
+    } else if(userScore == 50){
+     path = require('./image/five_star.png');
+    } else {
+     path = require('./image/one_star.png');
+    }
     return (
         <View style={styles.taskContainer}>
             <View style={styles.taskContainer}>
@@ -85,8 +97,8 @@ const HomeScreen = ({navigation}) => {
                     marginBottom:"40%",
                     width: "80%",
                     height: "40%",
-
-                }} source={require('./image/five_starts.png')}/>
+                }}
+                source={path}/>
             </View>
             </View>
 
@@ -250,6 +262,16 @@ const TaskScreen = ({navigation}) => {
                 <CheckBox value={isCup} onValueChange={setCup} style={styles.checkbox}/>
                 <Text style={styles.label}>Using Your Own Cup? {isCup ? '👍' : '👎'}</Text><Button title="?"
                                                                                                    onPress={() => navigation.navigate('Task_Details')}/>
+            </View>
+            <View style={styles.checkboxContainer}>
+                <CheckBox value={isCup} onValueChange={setCup} style={styles.checkbox}/>
+                <Text style={styles.label}>Using Your Own Cup? {isCup ? '👍' : '👎'}</Text><Button title="?"
+                                                                                                               onPress={() => navigation.navigate('Task_Details')}/>
+            </View>
+            <View style={styles.checkboxContainer}>
+                            <CheckBox value={isCup} onValueChange={setCup} style={styles.checkbox}/>
+                            <Text style={styles.label}>userScore {isCup ? '👍' : '👎'}</Text><Button title="?"
+                                                                                                               onPress={() => navigation.navigate('Task_Details')}/>
             </View>
         </View>
     );
